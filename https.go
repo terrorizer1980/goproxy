@@ -73,7 +73,7 @@ func (proxy *ProxyHttpServer) dialContext(ctx *ProxyCtx, network, addr string) (
 		pctx := context.WithValue(context.Background(), ProxyContextKey, ctx)
 		return proxy.Tr.DialContext(pctx, network, addr)
 	}
-	return proxy.ConnectDial(network, addr)
+	return proxy.connectDial(network, addr)
 }
 
 func (proxy *ProxyHttpServer) connectDialContext(ctx *ProxyCtx, network, addr string) (c net.Conn, err error) {
